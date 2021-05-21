@@ -23,6 +23,7 @@ module.exports = (app) => {
   });
 
   app.post('/api/surveys/webhooks', (req, res) => {
+    //npx ngrok http 5000
     const p = new Path('/api/surveys/:surveyId/:choice');
 
     _.chain(req.body)
@@ -78,7 +79,7 @@ module.exports = (app) => {
 
       res.send(user);
     } catch (err) {
-      req.status(422);
+      res.status(422).send(err);
     }
   });
 };
